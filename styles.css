@@ -1,0 +1,270 @@
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@300;400&display=swap');
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    padding: 15px;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 700px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+/* Mejoras de responsividad para pantallas pequeñas */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 0;
+        border-radius: 10px;
+    }
+    
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 28px !important;
+    }
+    
+    .firma {
+        font-size: 24px !important;
+    }
+}
+
+/* Línea decorativa superior */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(90deg, #ff79da, #9356dc);
+}
+
+/* Fecha */
+.date {
+    text-align: right;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+/* Encabezado */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #ff79da;
+    text-align: center;
+}
+
+/* Párrafos */
+p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: 300;
+    text-align: justify;
+}
+
+/* Frases resaltadas */
+.highlight {
+    font-weight: 400;
+    color: #ff79da;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    background-color: rgba(255, 121, 218, 0.1);
+    display: inline-block; /* Mejor comportamiento en dispositivos táctiles */
+    position: relative;
+}
+
+.highlight:hover, .highlight:active, .highlight.active {
+    color: #9356dc;
+    background-color: rgba(147, 86, 220, 0.2);
+    box-shadow: 0 0 5px rgba(255, 121, 218, 0.4);
+}
+
+/* Mejora visual para dispositivos móviles */
+@media (max-width: 600px) {
+    .highlight {
+        padding: 3px 5px; /* Aumenta el área táctil */
+        margin: 2px 0;
+    }
+}
+
+/* Firma */
+.firma {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    margin-top: 40px;
+    text-align: right;
+}
+
+/* Autor */
+.autor {
+    font-size: 12px;
+    text-align: right;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* Corazón animado */
+.corazon {
+    display: inline-block;
+    color: red;
+    font-size: 20px;
+    animation: latido 1.5s infinite;
+    margin: 0 5px;
+}
+
+/* Animación del latido */
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Instrucciones */
+.memo {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 18px;
+    color: #666;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+@media (max-width: 600px) {
+    .memo {
+        font-size: 16px;
+        margin-top: 30px;
+    }
+}
+
+/* Nombre del destinatario */
+.destinatario {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #ff79da;
+    font-weight: bold;
+}
+
+/* NUEVA VENTANA FLOTANTE */
+.mensaje-flotante {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    border: 1px solid rgba(255, 121, 218, 0.3);
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.mensaje-flotante.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.mensaje-contenido {
+    position: relative;
+    padding: 20px 50px 20px 20px;
+    background: linear-gradient(135deg, #ff79da 0%, #9356dc 100%);
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 400;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cerrar-mensaje {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+#cerrar-mensaje:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Animación para la ventana flotante */
+@keyframes mensajeEntrada {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.mensaje-flotante.visible {
+    animation: mensajeEntrada 0.3s ease forwards;
+}
+
+/* Responsive para la ventana flotante */
+@media (max-width: 600px) {
+    .mensaje-flotante {
+        width: 90%;
+        max-width: 320px;
+    }
+    
+    .mensaje-contenido {
+        padding: 15px 40px 15px 15px;
+        font-size: 15px;
+    }
+}
